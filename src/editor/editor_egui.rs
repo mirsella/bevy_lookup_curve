@@ -185,7 +185,7 @@ impl LookupCurveEguiEditor {
 
                 // Zooming
                 ui.input(|input| {
-                    let scroll_delta = input.raw_scroll_delta.y;
+                    let scroll_delta = input.smooth_scroll_delta.y;
                     if scroll_delta != 0.0 {
                         self.scale *= 1.0 + -scroll_delta * 0.001;
                         // TODO: adjust offset accordingly
@@ -529,9 +529,9 @@ impl LookupCurveEguiEditor {
                             to_screen.transform_pos(self.curve_to_canvas(knot.position)),
                             point_in_screen,
                         ],
-                        Stroke::new(1.0, Color32::GRAY),
-                        4.0,
-                        2.0,
+                        Stroke::new(1.0_f32, Color32::GRAY),
+                        4.0_f32,
+                        2.0_f32,
                     ));
 
                     painter.add(Shape::circle_filled(

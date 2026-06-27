@@ -121,7 +121,7 @@ fn lookup_curve_handle_ui(
         return false;
     };
 
-    lookup_curve_miniature_with_edit(curve, id, ui)
+    lookup_curve_miniature_with_edit(curve.into_inner(), id, ui)
 }
 
 fn lookup_curve_handle_ui_readonly(

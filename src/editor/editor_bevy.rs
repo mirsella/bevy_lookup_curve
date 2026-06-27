@@ -61,9 +61,13 @@ fn lookup_curve_editor_ui(
             .to_string();
         if let Some(curve) = curves.get_mut(&editor.curve_handle) {
             let sample = editor.sample;
-            editor
-                .egui_editor
-                .ui_window(contexts.ctx_mut()?, entity, title, curve, sample);
+            editor.egui_editor.ui_window(
+                contexts.ctx_mut()?,
+                entity,
+                title,
+                curve.into_inner(),
+                sample,
+            );
         }
     }
     Ok(())
